@@ -7,7 +7,7 @@ Ce dépôt mesure cet écart et teste des stratégies pour le réduire.
 ## Contenu du dépôt
 
 ```
-plant-disease-cnn/
+plantdiseasedl/
 ├── README.md
 ├── requirements.txt
 ├── scripts/
@@ -60,12 +60,12 @@ Le script nécessite uniquement `git` (≥ 2.25). Il utilise un clone partiel av
 1. Ouvrir `notebooks/Projet_Deep_Learning.ipynb` dans Colab (Fichier → Importer un notebook, ou depuis GitHub).
 2. Activer le GPU : *Exécution → Modifier le type d'exécution → GPU (T4)*.
 3. Exécuter toutes les cellules dans l'ordre. La section 2 télécharge les données dans `/content/data`.
-   Variante plus légère : exécuter d'abord `!git clone <url-du-depot>` puis `!python plant-disease-cnn/scripts/download_data.py --dest /content/data` et sauter la cellule de clonage de la section 2.
+   Variante plus légère : exécuter d'abord `!git clone https://github.com/Aiss11/plantdiseasedl.git` puis `!python plantdiseasedl/scripts/download_data.py --dest /content/data` et sauter la cellule de clonage de la section 2.
 
 ### Option B : en local
 
 ```bash
-git clone <url-du-depot> && cd plant-disease-cnn
+git clone https://github.com/Aiss11/plantdiseasedl.git && cd plantdiseasedl
 python -m venv .venv && source .venv/bin/activate    # Windows : .venv\Scripts\activate
 pip install -r requirements.txt
 python scripts/download_data.py                      # remplit ./data
@@ -91,6 +91,8 @@ Les graines aléatoires sont fixées à 42 pour les découpages (`train_test_spl
 Optimiseur Adam, perte *sparse categorical crossentropy*, EarlyStopping sur `val_loss`.
 
 ## Résultats principaux
+
+Chiffres issus du rapport technique. Réexécuter le notebook peut donner des valeurs légèrement différentes (initialisation aléatoire, augmentation de données, GPU), surtout sur le test PlantDoc de 61 images.
 
 | Modèle | Accuracy PlantVillage | Accuracy PlantDoc | F1 macro PlantDoc |
 |---|---|---|---|
